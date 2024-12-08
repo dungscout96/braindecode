@@ -4,6 +4,7 @@ Loader code for some datasets.
 
 from .base import WindowsDataset, BaseDataset, BaseConcatDataset
 from .moabb import MOABBDataset, HGD, BNCI2014001
+from .eegdash import EEGDashDataset
 from .mne import create_from_mne_raw, create_from_mne_epochs
 from .tuh import TUH, TUHAbnormal
 from .sleep_physionet import SleepPhysionet
@@ -17,6 +18,7 @@ __all__ = [
     "BaseDataset",
     "BaseConcatDataset",
     "MOABBDataset",
+    "EEGDashDataset",
     "HGD",
     "BNCI2014001",
     "create_from_mne_raw",
