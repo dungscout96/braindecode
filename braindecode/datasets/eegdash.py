@@ -186,7 +186,7 @@ class BIDSDataset():
 
     def load_and_preprocess_raw(self, raw_file, preprocess=False):
         print(f"Loading {raw_file}")
-        EEG = mne.io.Raw(raw_file, preload=False, verbose='error')
+        EEG = mne.io.read_raw_eeglab(raw_file, preload=False, verbose='error')
         return EEG
     
     def get_files(self):

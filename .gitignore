@@ -63,3 +63,4 @@ venv/
 *.json
 examples/model_building/lightning_logs/*
 .braindecode
+test/data/
