@@ -36,8 +36,18 @@ Enhancements
 - Add :class:`braindecode.models.CBraMod` model (:gh:`914` by `Pierre Guetschel`_)
 - Expose additional arguments of :func:`mne_bids.read_raw_bids` in :class:`braindecode.datasets.BIDSDataset` (:gh:`918` by `Pierre Guetschel`_)
 - Populate epochs metadata with the :class:`mne.Annotations`'s ``extras`` entries (:gh:`918` by `Pierre Guetschel`_)
-- Add :class:`braindecode.datasets.TUHEvents` dataset and improve other TUH datasets (:gh:`920` by `Pierre Guetschel`_)
-
+- Add :class:`braindecode.datasets.TUHEvents` dataset and improve other TUH datasets (:gh:`920` and :gh:`923` by `Pierre Guetschel`_)
+- Allow overlapping events in :func:`braindecode.preprocessing.create_windows_from_events` (:gh:`923` by `Pierre Guetschel`_)
+- Better alignment of channels configuration with the pretrained LABRAM model, including a warning when initializing without channel information and improved documentation (:gh:`931` by `Young Truong`_ )
+- Add informative ``__repr__`` and ``_repr_html_`` to
+  :class:`braindecode.datasets.RawDataset`,
+  :class:`braindecode.datasets.base.EEGWindowsDataset`,
+  :class:`braindecode.datasets.base.WindowsDataset`, and
+  :class:`braindecode.datasets.BaseConcatDataset` so that printing or
+  displaying a dataset in a notebook shows channel count/types, sampling
+  frequency, duration/window size, channel names, description summary, and
+  epoch-level metadata including target distribution and extra metadata columns
+  (signal-level details marked ``*`` are taken from the first recording).
 
 API changes
 ============
@@ -49,7 +59,14 @@ Requirements
 
 Bugs
 =====
-- Restrict to ``pandas>=3.0`` due to incompatibility with ``wfdb`` (:gh:`919` by `Pierre Guetschel`_)
+- Fix :func:`braindecode.preprocessing.preprocess.filterbank` to preserve info fields
+  (``description``, ``line_freq``, ``device_info``, etc.) when creating filtered copies,
+  avoiding merge conflicts in MNE when adding channels (:gh:`928` by `Bruno Aristimunha`_)
+- [Outdated:] *Restrict to ``pandas>=3.0`` due to incompatibility with ``wfdb``* (:gh:`919` by `Pierre Guetschel`_)
+- Fix multiple bugs in Labram positional encoding. Now the braindecode implementation is aligned with the original one (:gh:`931` by `Pierre Guetschel`_ )
+- Fix Zenodo citation: update to global concept DOI and add BibTeX/APA citation formats
+  in ``docs/cite.rst``, ``README.rst``, ``CITATION.cff``, and ``docs/conf.py``
+  (:gh:`937` by `Bruno Aristimunha`_)
 
 Code health
 ============
